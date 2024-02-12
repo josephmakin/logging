@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: josephmakin/logging-api
+        env:
+        - name: FLASK_MONGO_URI
+          value: mongodb://admin:password@mongo/db?authSource=admin
+        ports:
+        - containerPort: 5000
