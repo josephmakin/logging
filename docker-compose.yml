@@ -13,7 +13,7 @@ services:
       - ${PWD}/db_data:/data/db:Z
 
   api:
-    image: logging-api
+    image: josephmakin/logging-api
     environment:
       - FLASK_MONGO_URI=mongodb://admin:password@mongo/db?authSource=admin
     ports:
