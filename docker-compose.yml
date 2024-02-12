@@ -11,3 +11,10 @@ services:
       - 27017:27017
     volumes:
       - ${PWD}/db_data:/data/db:Z
+
+  api:
+    image: logging-api
+    environment:
+      - FLASK_MONGO_URI=mongodb://admin:password@mongo/db?authSource=admin
+    ports:
+      - 5000:5000
